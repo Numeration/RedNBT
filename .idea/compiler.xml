@@ -19,8 +19,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="RedNBT_main" target="1.5" />
-      <module name="RedNBT_test" target="1.5" />
+      <module name="RedNBT_main" target="1.8" />
+      <module name="RedNBT_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
