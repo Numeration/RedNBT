@@ -33,14 +33,14 @@ public final class NbtReader extends TagReader implements Closeable {
         visitor.visitBegin();
         int id = dataInputStream.readByte();
 
-        if(id > 0)
-            _load_tag(id, visitor);
-
+        if(id > 0) {
+            String name = dataInputStream.readUTF();
+            _load_tag(id, name, visitor);
+        }
         visitor.visitEnd();
     }
 
-    private void _load_tag(int id, TagVisitor visitor) throws Exception {
-        String name = dataInputStream.readUTF();
+    private void _load_tag(int id, String name, TagVisitor visitor) throws Exception {
 
         switch (id) {
             case  1:
@@ -84,7 +84,7 @@ public final class NbtReader extends TagReader implements Closeable {
                 TagVisitor tv = visitor.visitListTag(name, TagType.BY_ID[itemTypeId], length);
                 tv.visitBegin();
                 for(int i = 0; i < length; i++) {
-                    _load_tag(itemTypeId, tv);
+                    _load_tag(itemTypeId, null, tv);
                 }
                 tv.visitEnd();
                 break;
@@ -96,7 +96,8 @@ public final class NbtReader extends TagReader implements Closeable {
                     int entryId = dataInputStream.readUnsignedByte();
                     if(entryId == 0)
                         break;
-                    _load_tag(entryId, tv);
+                    String entryName = dataInputStream.readUTF();
+                    _load_tag(entryId, entryName, tv);
                 }
                 tv.visitEnd();
                 break;
