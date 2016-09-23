@@ -9,3 +9,4 @@ install:
 
 script:
   - gradle check
+  - gradle test
