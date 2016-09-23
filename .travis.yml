@@ -10,3 +10,6 @@ install:
 script:
   - gradle assemble
   - gradle check
+
+before_install:
+  - git fetch --unshallow
