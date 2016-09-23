@@ -5,8 +5,7 @@ jdk:
   - oraclejdk8
 
 install:
-  - gradle assemble
+  - ./gradlew assemble
 
 script:
-  - gradle clean
-  - gradle check
+  - ./gradlew check
