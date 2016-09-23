@@ -20,3 +20,7 @@ javadoc {
         links '<a href="http://docs.oracle.com/javase/8/docs/api">http://docs.oracle.com/javase/8/docs/api</a>'
     }
 }
+
+test {
+    include '**/*Test.class'
+}
