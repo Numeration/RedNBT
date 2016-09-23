@@ -5,11 +5,10 @@ jdk:
   - oraclejdk8
 
 install:
-    ./gradlew
+  - ./gradlew assemble
 
 script:
-  - gradle assemble
-  - gradle check
+  - ./gradlew check
 
 before_install:
   - chmod +x gradlew
