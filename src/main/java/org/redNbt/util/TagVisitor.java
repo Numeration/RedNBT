@@ -38,7 +38,7 @@ public interface TagVisitor {
      * @throws Exception
      *      此处可以抛出任何异常，通常I/O相关的实现会抛出<code>{@link java.io.IOException}</code>
      *      ,而在tag结构验证相关的实现则更倾向于抛出<code>{@link TagException}</code>
-     *      此处究极该抛出何种异常要视具体情况而定.
+     *      此处究竟该抛出何种异常要视具体情况而定.
      */
     void visitBegin() throws Exception;
 
@@ -53,7 +53,7 @@ public interface TagVisitor {
      * @throws Exception
      *      此处可以抛出任何异常，通常I/O相关的实现会抛出<code>{@link java.io.IOException}</code>
      *      ,而在tag结构验证相关的实现则更倾向于抛出<code>{@link TagException}</code>
-     *      此处究极该抛出何种异常要视具体情况而定.
+     *      此处究竟该抛出何种异常要视具体情况而定.
      */
     void visitByteTag(String name, byte value) throws Exception;
 
@@ -68,7 +68,7 @@ public interface TagVisitor {
      * @throws Exception
      *      此处可以抛出任何异常，通常I/O相关的实现会抛出<code>{@link java.io.IOException}</code>
      *      ,而在tag结构验证相关的实现则更倾向于抛出<code>{@link TagException}</code>
-     *      此处究极该抛出何种异常要视具体情况而定.
+     *      此处究竟该抛出何种异常要视具体情况而定.
      */
     void visitShortTag(String name, short value) throws Exception;
 
@@ -83,7 +83,7 @@ public interface TagVisitor {
      * @throws Exception
      *      此处可以抛出任何异常，通常I/O相关的实现会抛出<code>{@link java.io.IOException}</code>
      *      ,而在tag结构验证相关的实现则更倾向于抛出<code>{@link TagException}</code>
-     *      此处究极该抛出何种异常要视具体情况而定.
+     *      此处究竟该抛出何种异常要视具体情况而定.
      */
     void visitIntTag(String name, int value) throws Exception;
 
@@ -98,7 +98,7 @@ public interface TagVisitor {
      * @throws Exception
      *      此处可以抛出任何异常，通常I/O相关的实现会抛出<code>{@link java.io.IOException}</code>
      *      ,而在tag结构验证相关的实现则更倾向于抛出<code>{@link TagException}</code>
-     *      此处究极该抛出何种异常要视具体情况而定.
+     *      此处究竟该抛出何种异常要视具体情况而定.
      */
     void visitLongTag(String name, long value) throws Exception;
 
@@ -113,7 +113,7 @@ public interface TagVisitor {
      * @throws Exception
      *      此处可以抛出任何异常，通常I/O相关的实现会抛出<code>{@link java.io.IOException}</code>
      *      ,而在tag结构验证相关的实现则更倾向于抛出<code>{@link TagException}</code>
-     *      此处究极该抛出何种异常要视具体情况而定.
+     *      此处究竟该抛出何种异常要视具体情况而定.
      */
     void visitFloatTag(String name, float value) throws Exception;
 
@@ -128,7 +128,7 @@ public interface TagVisitor {
      * @throws Exception
      *      此处可以抛出任何异常，通常I/O相关的实现会抛出<code>{@link java.io.IOException}</code>
      *      ,而在tag结构验证相关的实现则更倾向于抛出<code>{@link TagException}</code>
-     *      此处究极该抛出何种异常要视具体情况而定.
+     *      此处究竟该抛出何种异常要视具体情况而定.
      */
     void visitDoubleTag(String name, double value) throws Exception;
 
@@ -143,7 +143,7 @@ public interface TagVisitor {
      * @throws Exception
      *      此处可以抛出任何异常，通常I/O相关的实现会抛出<code>{@link java.io.IOException}</code>
      *      ,而在tag结构验证相关的实现则更倾向于抛出<code>{@link TagException}</code>
-     *      此处究极该抛出何种异常要视具体情况而定.
+     *      此处究竟该抛出何种异常要视具体情况而定.
      */
     void visitByteArrayTag(String name, byte[] value) throws Exception;
 
@@ -158,7 +158,7 @@ public interface TagVisitor {
      * @throws Exception
      *      此处可以抛出任何异常，通常I/O相关的实现会抛出<code>{@link java.io.IOException}</code>
      *      ,而在tag结构验证相关的实现则更倾向于抛出<code>{@link TagException}</code>
-     *      此处究极该抛出何种异常要视具体情况而定.
+     *      此处究竟该抛出何种异常要视具体情况而定.
      */
     void visitStringTag(String name, String value) throws Exception;
 
@@ -178,7 +178,7 @@ public interface TagVisitor {
      * @throws Exception
      *      此处可以抛出任何异常，通常I/O相关的实现会抛出<code>{@link java.io.IOException}</code>
      *      ,而在tag结构验证相关的实现则更倾向于抛出<code>{@link TagException}</code>
-     *      此处究极该抛出何种异常要视具体情况而定.
+     *      此处究竟该抛出何种异常要视具体情况而定.
      */
     TagVisitor visitListTag(String name, TagType tagType, int size) throws Exception;
 
@@ -195,7 +195,7 @@ public interface TagVisitor {
      * @throws Exception
      *      此处可以抛出任何异常，通常I/O相关的实现会抛出<code>{@link java.io.IOException}</code>
      *      ,而在tag结构验证相关的实现则更倾向于抛出<code>{@link TagException}</code>
-     *      此处究极该抛出何种异常要视具体情况而定.
+     *      此处究竟该抛出何种异常要视具体情况而定.
      */
     TagVisitor visitCompoundTag(String name) throws Exception;
 
@@ -210,7 +210,7 @@ public interface TagVisitor {
      * @throws Exception
      *      此处可以抛出任何异常，通常I/O相关的实现会抛出<code>{@link java.io.IOException}</code>
      *      ,而在tag结构验证相关的实现则更倾向于抛出<code>{@link TagException}</code>
-     *      此处究极该抛出何种异常要视具体情况而定.
+     *      此处究竟该抛出何种异常要视具体情况而定.
      */
     void visitIntArrayTag(String name, int[] value) throws Exception;
 
@@ -220,7 +220,7 @@ public interface TagVisitor {
      * @throws Exception
      *      此处可以抛出任何异常，通常I/O相关的实现会抛出<code>{@link java.io.IOException}</code>
      *      ,而在tag结构验证相关的实现则更倾向于抛出<code>{@link TagException}</code>
-     *      此处究极该抛出何种异常要视具体情况而定.
+     *      此处究竟该抛出何种异常要视具体情况而定.
      */
     void visitEnd() throws Exception;
 
