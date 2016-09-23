@@ -4,7 +4,7 @@ jdk:
   - oraclejdk8
 
 install:
-  - ./gradlew assemble
+  - sudo ./gradlew
 
 script:
   - ./gradlew check
