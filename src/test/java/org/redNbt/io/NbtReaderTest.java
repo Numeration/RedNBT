@@ -7,6 +7,7 @@ import org.redNbt.util.TagInfoPrinter;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 
 /**
@@ -18,6 +19,7 @@ public class NbtReaderTest {
     private GZIPInputStream gzipInputStream;
     private BufferedInputStream bufferedInputStream;
     private NbtReader nbtReader;
+
 
     @Before
     public void setUp() throws Exception {
@@ -33,8 +35,10 @@ public class NbtReaderTest {
         TagInfoPrinter tagInfoPrinter = new TagInfoPrinter(tagInfo, false);
 
         nbtReader.readTag(tagInfoPrinter);
+        Logger logger= Logger.getLogger(NbtReaderTest.class.getName());
+        //System.out.println(tagInfo.toString());
+        logger.info(tagInfo.toString());
 
-        System.out.println(tagInfo.toString());
     }
 
     @After
