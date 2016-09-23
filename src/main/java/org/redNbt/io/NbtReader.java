@@ -4,75 +4,39 @@ import org.redNbt.util.TagException;
 import org.redNbt.util.TagType;
 import org.redNbt.util.TagVisitor;
 
+import java.io.Closeable;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @author Bug<3050429487@qq.com>
+ * 从{@link InputStream InputStream}中读取nbt数据.
+ * 此写入器是{@link TagReader TagReader}接口的一个实现，所有意味着可以
+ * 使用{@link TagVisitor TagVisitor}来从当前接口中读取nbt tag数据
+ *
+ * @author Bug[3050429487@qq.com]
  */
-public class NbtInputStream extends InputStream {
+public final class NbtReader extends TagReader implements Closeable {
 
     private final DataInputStream dataInputStream;
 
-    public NbtInputStream(InputStream inputStream) {
+    public NbtReader(InputStream inputStream) {
         this.dataInputStream = new DataInputStream(inputStream);
-    }
-
-    @Override
-    public int read() throws IOException {
-        return dataInputStream.read();
-    }
-
-    @Override
-    public int read(byte[] b) throws IOException {
-        return dataInputStream.read(b);
-    }
-
-    @Override
-    public int read(byte[] b, int off, int len) throws IOException {
-        return dataInputStream.read(b, off, len);
-    }
-
-    @Override
-    public long skip(long n) throws IOException {
-        return dataInputStream.skip(n);
-    }
-
-    @Override
-    public int available() throws IOException {
-        return dataInputStream.available();
-    }
-
-    @Override
-    public void close() throws IOException {
-        dataInputStream.close();
-    }
-
-    @Override
-    public synchronized void mark(int readlimit) {}
-
-    @Override
-    public synchronized void reset() throws IOException {
-        throw new IOException("mark/reset not supported");
-    }
-
-    @Override
-    public boolean markSupported() {
-        return false;
     }
 
     public void readTag(TagVisitor visitor) throws Exception {
         _load_tag(visitor);
     }
 
+
     private void _load_tag(TagVisitor visitor) throws Exception {
+        visitor.visitBegin();
         int id = dataInputStream.readByte();
 
-        if(id == 0)
-            _throw_end_tag_exception();
+        if(id > 0)
+            _load_tag(id, visitor);
 
-        _load_tag(id, visitor);
+        visitor.visitEnd();
     }
 
     private void _load_tag(int id, TagVisitor visitor) throws Exception {
@@ -118,21 +82,23 @@ public class NbtInputStream extends InputStream {
                 final int itemTypeId = dataInputStream.readUnsignedByte();
                 length = dataInputStream.readInt();
                 TagVisitor tv = visitor.visitListTag(name, TagType.BY_ID[itemTypeId], length);
-                for(int i = 0; i < length; i++)
-                {
+                tv.visitBegin();
+                for(int i = 0; i < length; i++) {
                     _load_tag(itemTypeId, tv);
                 }
+                tv.visitEnd();
                 break;
 
             case 10:
                 tv = visitor.visitCompoundTag(name);
+                tv.visitBegin();
                 while(true) {
                     int entryId = dataInputStream.readUnsignedByte();
                     if(entryId == 0)
                         break;
                     _load_tag(entryId, tv);
                 }
-                tv.visitEndTag();
+                tv.visitEnd();
                 break;
 
             case 11:
@@ -150,12 +116,13 @@ public class NbtInputStream extends InputStream {
 
     }
 
-    private void _throw_end_tag_exception() throws TagException {
-        throw new TagException("EndTag与CompoundTag不匹配");
-    }
-
     private void _throw_unknown_type_tag(int id) throws TagException {
         throw new TagException("未知的Tag类型ID " + id);
+    }
+
+    @Override
+    public void close() throws IOException {
+        dataInputStream.close();
     }
 
 }

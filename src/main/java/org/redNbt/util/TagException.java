@@ -1,7 +1,7 @@
 package org.redNbt.util;
 
 /**
- * @author Bug<3050429487@qq.com>
+ * @author Bug[3050429487@qq.com]
  */
 public class TagException extends Exception {
 

@@ -3,7 +3,7 @@ package org.redNbt.annotation;
 import java.lang.annotation.*;
 
 /**
- * @author Bug<3050429487@qq.com>
+ * @author Bug[3050429487@qq.com]
  */
 
 @Target(ElementType.METHOD)

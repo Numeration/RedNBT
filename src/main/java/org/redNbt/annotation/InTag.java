@@ -5,7 +5,7 @@ import org.redNbt.util.TagType;
 import java.lang.annotation.*;
 
 /**
- * @author Bug<3050429487@qq.com>
+ * @author Bug[3050429487@qq.com]
  */
 
 @Target(ElementType.METHOD)

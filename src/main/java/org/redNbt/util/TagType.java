@@ -8,7 +8,7 @@ import java.util.Map;
  * Nbt tag类型的描述.
  * 用于在tag的底层类型<i>id</i>和java类型之间转换
  *
- * @author Bug<3050429487@qq.com>
+ * @author Bug[3050429487@qq.com]
  */
 public enum TagType {
 
