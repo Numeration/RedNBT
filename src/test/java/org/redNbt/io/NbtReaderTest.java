@@ -7,7 +7,10 @@ import org.redNbt.util.TagInfoPrinter;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.zip.GZIPInputStream;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by test_ on 2016/9/23.
@@ -19,6 +22,7 @@ public class NbtReaderTest {
     private BufferedInputStream bufferedInputStream;
     private NbtReader nbtReader;
 
+    private String results;
 
     @Before
     public void setUp() throws Exception {
@@ -26,6 +30,16 @@ public class NbtReaderTest {
         gzipInputStream = new GZIPInputStream(inputStream);
         bufferedInputStream = new BufferedInputStream(gzipInputStream);
         nbtReader = new NbtReader(bufferedInputStream);
+
+        StringBuilder sb = new StringBuilder();
+        try(InputStreamReader isr = new InputStreamReader(getClass().getResourceAsStream("/test_1_nbt_info"))) {
+            char[] buffer = new char[1024];
+            int length = 0;
+            while ((length = isr.read(buffer)) > 0)
+                sb.append(buffer, 0, length);
+        }
+
+        results = sb.toString().replace("\r\n", "\n");
     }
 
     @Test
@@ -34,7 +48,8 @@ public class NbtReaderTest {
         TagInfoPrinter tagInfoPrinter = new TagInfoPrinter(tagInfo, false);
 
         nbtReader.readTag(tagInfoPrinter);
-        System.out.println(tagInfo.toString());
+        String testResults = tagInfo.toString();
+        assertEquals(results, testResults);
     }
 
     @After
@@ -45,6 +60,7 @@ public class NbtReaderTest {
         gzipInputStream = null;
         bufferedInputStream = null;
         nbtReader = null;
+        results = null;
     }
 
 }

@@ -16,7 +16,7 @@ import java.io.*;
  * @see TagWriter
  * @see TagVisitor
  */
-public final class NbtWriter extends TagWriter implements Closeable, Flushable {
+public final class NbtWriter implements TagWriter, Closeable, Flushable {
 
     private final DataOutputStream dataOutputStream;
 
@@ -126,7 +126,7 @@ public final class NbtWriter extends TagWriter implements Closeable, Flushable {
 
 
 
-    abstract class AbstractTagWriter extends TagWriter {
+    abstract class AbstractTagWriter implements TagWriter {
 
         @Override
         public void visitBegin() {

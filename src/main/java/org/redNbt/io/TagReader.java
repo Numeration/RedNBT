@@ -8,7 +8,7 @@ import org.redNbt.util.TagVisitor;
  * @author Bug[3050429487@qq.com]
  *
  */
-public abstract class TagReader {
+public interface TagReader {
 
     /**
      * 读取tag.
@@ -23,6 +23,6 @@ public abstract class TagReader {
      *
      * @see TagVisitor
      */
-    public abstract void readTag(TagVisitor visitor) throws Exception;
+    void readTag(TagVisitor visitor) throws Exception;
 
 }

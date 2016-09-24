@@ -1,4 +1,4 @@
-package org.redNbt.annotation.channel;
+package org.redNbt.annotation.tag.channel;
 
 import java.lang.annotation.*;
 
@@ -10,5 +10,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-public @interface ListTagExit {
+public @interface CompoundTagEntry {
 }

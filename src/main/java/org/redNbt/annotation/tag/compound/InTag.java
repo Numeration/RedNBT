@@ -1,4 +1,4 @@
-package org.redNbt.annotation;
+package org.redNbt.annotation.tag.compound;
 
 import org.redNbt.util.TagType;
 
@@ -12,21 +12,21 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-public @interface OutTag {
+public @interface InTag {
 
     /**
-     * 输出tag的名字
+     * 输入tag的名字
      *
      * @return
-     *      一个字符串表示输出tag的名字
+     *      一个字符串表示输入tag的名字
      */
     String name();
 
     /**
-     * 输出tag的类型.
+     * 输入tag的类型.
      *
      * @return
-     *      一个{@link TagType 枚举类型}表示输出tag的类型
+     *      一个{@link TagType 枚举类型}表示输入tag的类型
      * @see
      *      TagType
      */

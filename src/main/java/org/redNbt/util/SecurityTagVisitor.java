@@ -9,7 +9,7 @@ package org.redNbt.util;
  *
  * @see TagVisitor
  */
-public interface SecureTagVisitor extends TagVisitor {
+public interface SecurityTagVisitor extends TagVisitor {
 
     /**
      * 开始一个访问序列.
@@ -20,7 +20,7 @@ public interface SecureTagVisitor extends TagVisitor {
      * 访问一个byte类型的nbt tag
      *
      * @param name
-     *      tag的名字，或为null 如果当前tag visitor是一个list tag visitor且该tag没有定义name
+     *      tag的名字，或为null 如果此tag是一个list tag的元素
      * @param value
      *      tag的值
      */
@@ -30,7 +30,7 @@ public interface SecureTagVisitor extends TagVisitor {
      * 访问一个short类型的nbt tag
      *
      * @param name
-     *      tag的名字，或为null 如果当前tag visitor是一个list tag visitor且该tag没有定义name
+     *      tag的名字，或为null 如果此tag是一个list tag的元素
      * @param value
      *      tag的值
      */
@@ -40,7 +40,7 @@ public interface SecureTagVisitor extends TagVisitor {
      * 访问一个int类型的nbt tag
      *
      * @param name
-     *      tag的名字，或为null 如果当前tag visitor是一个list tag visitor且该tag没有定义name
+     *      tag的名字，或为null 如果此tag是一个list tag的元素
      * @param value
      *      tag的值
      */
@@ -50,7 +50,7 @@ public interface SecureTagVisitor extends TagVisitor {
      * 访问一个long类型的nbt tag
      *
      * @param name
-     *      tag的名字，或为null 如果当前tag visitor是一个list tag visitor且该tag没有定义name
+     *      tag的名字，或为null 如果此tag是一个list tag的元素
      * @param value
      *      tag的值
      */
@@ -60,7 +60,7 @@ public interface SecureTagVisitor extends TagVisitor {
      * 访问一个float类型的nbt tag
      *
      * @param name
-     *      tag的名字，或为null 如果当前tag visitor是一个list tag visitor且该tag没有定义name
+     *      tag的名字，或为null 如果此tag是一个list tag的元素
      * @param value
      *      tag的值
      */
@@ -70,7 +70,7 @@ public interface SecureTagVisitor extends TagVisitor {
      * 访问一个double类型的nbt tag
      *
      * @param name
-     *      tag的名字，或为null 如果当前tag visitor是一个list tag visitor且该tag没有定义name
+     *      tag的名字，或为null 如果此tag是一个list tag的元素
      * @param value
      *      tag的值
      */
@@ -80,7 +80,7 @@ public interface SecureTagVisitor extends TagVisitor {
      * 访问一个byte数组类型的nbt tag
      *
      * @param name
-     *      tag的名字，或为null 如果当前tag visitor是一个list tag visitor且该tag没有定义name
+     *      tag的名字，或为null 如果此tag是一个list tag的元素
      * @param value
      *      tag的值
      */
@@ -90,7 +90,7 @@ public interface SecureTagVisitor extends TagVisitor {
      * 访问一个字符串类型的nbt tag
      *
      * @param name
-     *      tag的名字，或为null 如果当前tag visitor是一个list tag visitor且该tag没有定义name
+     *      tag的名字，或为null 如果此tag是一个list tag的元素
      * @param value
      *      tag的值
      */
@@ -100,7 +100,7 @@ public interface SecureTagVisitor extends TagVisitor {
      * 访问一个list类型的nbt tag
      *
      * @param name
-     *      tag的名字，或为null 如果当前tag visitor是一个list tag visitor且该tag没有定义name
+     *      tag的名字，或为null 如果此tag是一个list tag的元素
      * @param tagType
      *      list所包含的tag的类型，相当于伪代码<code>List&lt;tagType&gt;</code>
      * @param size
@@ -109,24 +109,24 @@ public interface SecureTagVisitor extends TagVisitor {
      * @return
      *      用于访问list tag内部的secure tag visitor
      */
-    SecureTagVisitor visitListTag(String name, TagType tagType, int size);
+    SecurityTagVisitor visitListTag(String name, TagType tagType, int size);
 
     /**
      * 访问一个compound类型的nbt tag
      *
      * @param name
-     *      tag的名字，或为null 如果当前tag visitor是一个list tag visitor且该tag没有定义name
+     *      tag的名字，或为null 如果此tag是一个list tag的元素
      *
      * @return
      *      用于访问compound tag内部的secure tag visitor
      */
-    SecureTagVisitor visitCompoundTag(String name);
+    SecurityTagVisitor visitCompoundTag(String name);
 
     /**
      * 访问一个int数组类型的nbt tag
      *
      * @param name
-     *      tag的名字，或为null 如果当前tag visitor是一个list tag visitor且该tag没有定义name
+     *      tag的名字，或为null 如果此tag是一个list tag的元素
      * @param value
      *      tag的值
      */

@@ -8,10 +8,10 @@ package org.redNbt.util;
  * @author Bug[3050429487@qq.com]
  *
  * @see TagVisitor
- * @see SecureTagVisitor
+ * @see SecurityTagVisitor
  * @see TVExceptionHandler
  */
-public class TVExceptionSeparator implements SecureTagVisitor {
+public class TVExceptionSeparator implements SecurityTagVisitor {
 
     private final TagVisitor tagVisitor;
     private final TVExceptionHandler exceptionHandler;
@@ -124,7 +124,7 @@ public class TVExceptionSeparator implements SecureTagVisitor {
     }
 
     @Override
-    public SecureTagVisitor visitListTag(String name, TagType tagType, int size) {
+    public SecurityTagVisitor visitListTag(String name, TagType tagType, int size) {
         TagVisitor listTagVisitor = null;
         String tagAlias = (isListVisitor ? Integer.toString(count) : name);
 
@@ -142,7 +142,7 @@ public class TVExceptionSeparator implements SecureTagVisitor {
     }
 
     @Override
-    public SecureTagVisitor visitCompoundTag(String name) {
+    public SecurityTagVisitor visitCompoundTag(String name) {
         TagVisitor compoundTagVisitor = null;
         String tagAlias = (isListVisitor ? Integer.toString(count) : name);
 

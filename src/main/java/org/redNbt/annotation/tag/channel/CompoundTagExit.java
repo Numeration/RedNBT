@@ -1,4 +1,4 @@
-package org.redNbt.annotation.channel;
+package org.redNbt.annotation.tag.channel;
 
 import java.lang.annotation.*;
 

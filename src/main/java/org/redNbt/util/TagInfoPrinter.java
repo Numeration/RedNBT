@@ -3,7 +3,7 @@ package org.redNbt.util;
 /**
  * @author Bug[3050429487@qq.com]
  */
-public class TagInfoPrinter implements SecureTagVisitor {
+public class TagInfoPrinter implements SecurityTagVisitor {
 
     private static final String BYTE_TAG_NAME         = "ByteTag ------> ";
     private static final String SHORT_TAG_NAME        = "ShortTag -----> ";
@@ -190,7 +190,7 @@ public class TagInfoPrinter implements SecureTagVisitor {
     }
 
     @Override
-    public SecureTagVisitor visitListTag(String name, TagType tagType, int size) {
+    public SecurityTagVisitor visitListTag(String name, TagType tagType, int size) {
         int clayer = this.layer;
         _append_tab(clayer)
                 .append(LIST_TAG_NAME)
@@ -208,7 +208,7 @@ public class TagInfoPrinter implements SecureTagVisitor {
     }
 
     @Override
-    public SecureTagVisitor visitCompoundTag(String name) {
+    public SecurityTagVisitor visitCompoundTag(String name) {
         int clayer = this.layer;
         _append_tab(clayer)
                 .append(COMPOUND_TAG_NAME)

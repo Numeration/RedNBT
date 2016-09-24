@@ -1,4 +1,4 @@
-package org.redNbt.annotation.channel;
+package org.redNbt.annotation.tag;
 
 import java.lang.annotation.*;
 
@@ -6,9 +6,10 @@ import java.lang.annotation.*;
  * @author Bug[3050429487@qq.com]
  */
 
-@Target(ElementType.TYPE)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-public @interface ListTagEntry {
+public @interface TagExceptionHandler {
+
 }

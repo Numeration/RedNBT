@@ -16,9 +16,77 @@ import java.io.InputStream;
  *
  * @author Bug[3050429487@qq.com]
  */
-public final class NbtReader extends TagReader implements Closeable {
+public final class NbtReader implements  Closeable {
 
     private final DataInputStream dataInputStream;
+
+    private static final TagVisitor emptyVisitor = new TagVisitor() {
+
+        @Override
+        public void visitBegin() throws Exception {
+
+        }
+
+        @Override
+        public void visitByteTag(String name, byte value) throws Exception {
+
+        }
+
+        @Override
+        public void visitShortTag(String name, short value) throws Exception {
+
+        }
+
+        @Override
+        public void visitIntTag(String name, int value) throws Exception {
+
+        }
+
+        @Override
+        public void visitLongTag(String name, long value) throws Exception {
+
+        }
+
+        @Override
+        public void visitFloatTag(String name, float value) throws Exception {
+
+        }
+
+        @Override
+        public void visitDoubleTag(String name, double value) throws Exception {
+
+        }
+
+        @Override
+        public void visitByteArrayTag(String name, byte[] value) throws Exception {
+
+        }
+
+        @Override
+        public void visitStringTag(String name, String value) throws Exception {
+
+        }
+
+        @Override
+        public TagVisitor visitListTag(String name, TagType tagType, int size) throws Exception {
+            return null;
+        }
+
+        @Override
+        public TagVisitor visitCompoundTag(String name) throws Exception {
+            return null;
+        }
+
+        @Override
+        public void visitIntArrayTag(String name, int[] value) throws Exception {
+
+        }
+
+        @Override
+        public void visitEnd() throws Exception {
+
+        }
+    };
 
     public NbtReader(InputStream inputStream) {
         this.dataInputStream = new DataInputStream(inputStream);
@@ -82,8 +150,11 @@ public final class NbtReader extends TagReader implements Closeable {
                 final int itemTypeId = dataInputStream.readUnsignedByte();
                 length = dataInputStream.readInt();
                 TagVisitor tv = visitor.visitListTag(name, TagType.BY_ID[itemTypeId], length);
+
+                if(tv == null)
+                    tv = emptyVisitor;
                 tv.visitBegin();
-                for(int i = 0; i < length; i++) {
+                for (int i = 0; i < length; i++) {
                     _load_tag(itemTypeId, null, tv);
                 }
                 tv.visitEnd();
@@ -91,6 +162,9 @@ public final class NbtReader extends TagReader implements Closeable {
 
             case 10:
                 tv = visitor.visitCompoundTag(name);
+
+                if(tv == null)
+                    tv = emptyVisitor;
                 tv.visitBegin();
                 while(true) {
                     int entryId = dataInputStream.readUnsignedByte();
